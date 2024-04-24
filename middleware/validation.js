@@ -1,7 +1,5 @@
 const chalk = require('chalk');
 const { getSubscriptionDate } = require('../utils/index')
-const bucketUrl = process.env.STATIC_BUCKET_NAME;
-
 
 // Validate API
 exports.validateLoginUserAPI = (req, res, next) => {

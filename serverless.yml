@@ -1,4 +1,4 @@
-service: analysts24x7-backend
+service: commit-reviewer-backend
 
 plugins:
   - serverless-dotenv-plugin
@@ -10,7 +10,7 @@ provider:
  timeout: 300
  #provisionedConcurrency: 5 # Adjust based on your needs
  stage: production
- role: arn:aws:iam::532633343628:role/analysts24x7
+ role: arn:aws:iam::485947658225:role/commit-reviewer-backend
  region: us-west-1 # AWS region
  apiGateway:
     binaryMediaTypes:

@@ -1,0 +1,29 @@
+service: analysts24x7-backend
+
+plugins:
+  - serverless-dotenv-plugin
+  
+provider:
+ name: aws
+ runtime: nodejs16.x # Node JS version
+ memorySize: 512
+ timeout: 300
+ #provisionedConcurrency: 5 # Adjust based on your needs
+ stage: production
+ role: arn:aws:iam::532633343628:role/analysts24x7
+ region: us-west-1 # AWS region
+ apiGateway:
+    binaryMediaTypes:
+      - "*/*" 
+      - 'image/*'
+      - 'application/pdf'
+      - 'application/zip'
+      - 'application/octet-stream'
+
+functions:
+ api:
+   handler: lambda.handler
+   events:
+     - http: ANY /{proxy+}
+     - http: ANY /
+     

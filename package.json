@@ -1,0 +1,56 @@
+{
+  "name": "analysts24x7-backend",
+  "version": "1.0.0",
+  "description": "this is excel support backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon local.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeztech-atique/analysts24x7-backend.git"
+  },
+  "author": "atique",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeztech-atique/analysts24x7-backend/issues"
+  },
+  "homepage": "https://github.com/codeztech-atique/analysts24x7-backend#readme",
+  "dependencies": {
+    "@aws-sdk/client-apigatewaymanagementapi": "^3.241.0",
+    "@aws-sdk/client-cognito-identity-provider": "^3.395.0",
+    "@aws-sdk/client-dynamodb": "^3.395.0",
+    "@aws-sdk/client-s3": "^3.379.1",
+    "@aws-sdk/client-ses": "^3.369.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.395.0",
+    "@aws-sdk/s3-request-presigner": "^3.504.0",
+    "@aws-sdk/util-dynamodb": "^3.405.0",
+    "@elastic/elasticsearch": "^8.6.0",
+    "acuityscheduling": "^0.1.9",
+    "amazon-cognito-identity-js": "^5.2.0",
+    "aws-sdk": "^2.1045.0",
+    "aws-serverless-express": "^3.4.0",
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.2",
+    "chargebee": "^2.27.0",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "date-fns": "^2.30.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.5",
+    "node-fetch": "^2.6.6",
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "serverless": "^2.70.0",
+    "serverless-dotenv-plugin": "^4.0.2",
+    "uuid": "^8.3.2",
+    "ws": "^8.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

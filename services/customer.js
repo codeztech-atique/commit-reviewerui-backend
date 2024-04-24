@@ -3,7 +3,7 @@ const dataBase = require('../elasticdb');
 // Elasticsearch Index Name
 const indexName = process.env.PROD_COMMIT_REVIEWS_ELASTICSEARCH_INDEX;
 
-exports.getAllCommits = (commitid, from, size) => {
+exports.getAllCommits = (from, size) => {
     return new Promise((resolve, reject) => {
         dataBase.elasticsearch.search({
            index: indexName,

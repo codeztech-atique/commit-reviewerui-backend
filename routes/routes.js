@@ -38,4 +38,8 @@ app.get('/dashboard', [middleware.bearerTokenPresent, authentication.loggedInUse
    userController.getDashboardInformation(req, res);
 })
 
+app.get('/total-commits', [middleware.bearerTokenPresent, authentication.loggedInUserVerifyToken, permissions.customerPermission], (req, res) => {
+   userController.getTotalCommits(req, res);
+})
+
 module.exports = app;

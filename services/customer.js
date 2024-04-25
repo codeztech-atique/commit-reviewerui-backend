@@ -44,7 +44,7 @@ exports.userCommitDetails = (commitId) => {
       }).then(async function (response) {
          var hits = response._source;
          var gitGithubComments = await getGitHubComments(hits.commitId, hits.repoName);
-         hits['comments'] = gitGithubComments[0].body;
+         hits['comments'] = gitGithubComments.length > 0 ? gitGithubComments[0].body : "";
          resolve(hits);
       }, function (error) {
          console.trace(error.message)

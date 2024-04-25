@@ -1,5 +1,6 @@
+require('dotenv').config();
 const dataBase = require('../elasticdb');
-
+const axios = require('axios')
 // Elasticsearch Index Name
 const indexName = process.env.PROD_COMMIT_REVIEWS_ELASTICSEARCH_INDEX;
 
@@ -40,8 +41,10 @@ exports.userCommitDetails = (commitId) => {
       dataBase.elasticsearch.get({
          index: indexName,
          id: commitId,
-      }).then(function (response) {
+      }).then(async function (response) {
          var hits = response._source;
+         var gitGithubComments = await getGitHubComments(hits.commitId, hits.repoName);
+         hits['comments'] = gitGithubComments[0].body;
          resolve(hits);
       }, function (error) {
          console.trace(error.message)
@@ -50,4 +53,19 @@ exports.userCommitDetails = (commitId) => {
          console.log("Elasticsearch ERROR - data not fetched", err);
       }) 
    })
- }
+}
+
+const getGitHubComments = async (commitId, repoName) => {
+   const repoOwner = repoName.split('/')[0];  // Gets the owner
+   const repo = repoName.split('/')[1];      // Gets the repository name
+   const url = `https://api.github.com/repos/${repoOwner}/${repo}/commits/${commitId}/comments`;
+   try {
+       const response = await axios.get(url, {
+           headers: { 'Authorization': `token ${process.env.GITHUB_TOKEN}` }
+       });
+       return response.data;
+   } catch (error) {
+       console.error('Failed to fetch GitHub comments:', error.message);
+       return []; // Return empty array or handle error as needed
+   }
+};

@@ -46,11 +46,11 @@
     "path": "^0.12.7",
     "request": "^2.88.2",
     "serverless": "^2.70.0",
-    "serverless-dotenv-plugin": "^4.0.2",
     "uuid": "^8.3.2",
     "ws": "^8.11.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "serverless-dotenv-plugin": "^6.0.0"
   }
 }

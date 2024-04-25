@@ -33,3 +33,15 @@ exports.getDashboardInformation = async(req, res) => {
     })
   }
 }
+
+exports.getCommitDetails = async(req, res) => {
+  try {
+      const commitid = req.query['commitid'];
+      const result = await commitDetails.userCommitDetails(commitid);
+      res.send(result)
+  } catch(err) {
+      res.status(400).send({
+          error: err
+      })
+  }
+}

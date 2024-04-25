@@ -34,3 +34,20 @@ exports.getAllCommits = (from, size) => {
         }) 
      });
 }
+
+exports.userCommitDetails = (commitId) => {
+   return new Promise((resolve, reject) => {
+      dataBase.elasticsearch.get({
+         index: indexName,
+         id: commitId,
+      }).then(function (response) {
+         var hits = response._source;
+         resolve(hits);
+      }, function (error) {
+         console.trace(error.message)
+         reject(error.message)
+      }).catch((err) => {
+         console.log("Elasticsearch ERROR - data not fetched", err);
+      }) 
+   })
+ }

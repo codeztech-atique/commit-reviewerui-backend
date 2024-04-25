@@ -42,4 +42,8 @@ app.get('/total-commits', [middleware.bearerTokenPresent, authentication.loggedI
    userController.getTotalCommits(req, res);
 })
 
+app.get('/details', [middleware.bearerTokenPresent, authentication.loggedInUserVerifyToken, permissions.commonPermission], (req, res) => {
+   userController.getCommitDetails(req, res);
+});
+
 module.exports = app;
